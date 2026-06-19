@@ -1,0 +1,487 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:#0f172a;
+}
+
+/* Animated Gradient */
+
+.bg-animation{
+position:fixed;
+inset:0;
+background:linear-gradient(
+-45deg,
+#0f172a,
+#1e293b,
+#7c3aed,
+#2563eb
+);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Floating Objects */
+
+.floating{
+position:absolute;
+border-radius:50%;
+backdrop-filter:blur(15px);
+background:rgba(255,255,255,.08);
+animation:float 8s infinite ease-in-out;
+}
+
+.floating1{
+width:220px;
+height:220px;
+top:10%;
+left:10%;
+}
+
+.floating2{
+width:180px;
+height:180px;
+bottom:15%;
+right:10%;
+}
+
+.floating3{
+width:120px;
+height:120px;
+top:60%;
+left:25%;
+}
+
+@keyframes float{
+0%,100%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-40px);
+}
+}
+
+/* Center */
+
+.container{
+position:relative;
+z-index:5;
+width:100%;
+padding:20px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* Glass Card */
+
+.form-card{
+width:100%;
+max-width:430px;
+padding:40px;
+border-radius:25px;
+
+```
+background:rgba(255,255,255,0.08);
+
+border:1px solid rgba(255,255,255,.2);
+
+backdrop-filter:blur(25px);
+
+box-shadow:
+0 20px 50px rgba(0,0,0,.3);
+
+transition:.4s;
+```
+
+}
+
+.form-card:hover{
+transform:translateY(-8px);
+}
+
+.form-card h1{
+color:white;
+text-align:center;
+font-size:32px;
+}
+
+.form-card p{
+color:#dbeafe;
+text-align:center;
+margin-top:10px;
+margin-bottom:30px;
+}
+
+/* Inputs */
+
+.input-box{
+display:flex;
+align-items:center;
+gap:12px;
+
+```
+background:rgba(255,255,255,.08);
+
+border:1px solid rgba(255,255,255,.15);
+
+padding:15px;
+border-radius:15px;
+
+margin-bottom:18px;
+```
+
+}
+
+.input-box i{
+color:white;
+}
+
+.input-box input{
+width:100%;
+border:none;
+outline:none;
+background:transparent;
+color:white;
+font-size:15px;
+}
+
+.input-box input::placeholder{
+color:#cbd5e1;
+}
+
+/* Button */
+
+.btn{
+width:100%;
+border:none;
+padding:15px;
+
+```
+border-radius:15px;
+
+background:linear-gradient(
+135deg,
+#7c3aed,
+#2563eb
+);
+
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+
+transition:.4s;
+```
+
+}
+
+.btn:hover{
+transform:scale(1.03);
+}
+
+/* Bottom Text */
+
+.bottom-text{
+text-align:center;
+margin-top:20px;
+color:white;
+}
+
+.bottom-text a{
+color:#60a5fa;
+text-decoration:none;
+font-weight:600;
+}
+
+#togglePassword{
+    cursor:pointer;
+    color:white;
+}
+.navbar{
+
+```
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+padding:20px 40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+z-index:999;
+```
+
+}
+
+.navbar h2{
+color:white;
+}
+
+.logout-btn{
+
+```
+border:none;
+
+padding:12px 24px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+color:white;
+
+font-weight:600;
+
+background:linear-gradient(
+135deg,
+#ef4444,
+#dc2626
+);
+
+transition:.3s;
+```
+
+}
+
+.logout-btn:hover{
+
+```
+transform:translateY(-3px);
+```
+
+}
+
+.home-container{
+
+```
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+position:relative;
+
+z-index:5;
+```
+
+}
+
+.welcome-card{
+
+```
+width:100%;
+
+max-width:420px;
+
+text-align:center;
+
+padding:40px 30px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.15);
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.25);
+
+animation:cardFloat 4s ease-in-out infinite;
+```
+
+}
+
+@keyframes cardFloat{
+
+```
+0%,100%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-10px);
+}
+```
+
+}
+
+.circle{
+
+```
+width:90px;
+
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:linear-gradient(
+135deg,
+#7c3aed,
+#2563eb
+);
+
+margin-bottom:20px;
+```
+
+}
+
+.welcome-card h1{
+
+```
+color:white;
+
+font-size:32px;
+```
+
+}
+
+.welcome-card p{
+
+```
+color:#dbeafe;
+
+margin-top:12px;
+
+font-size:17px;
+```
+
+}
+
+.welcome-card span{
+
+```
+display:block;
+
+margin-top:15px;
+
+color:#60a5fa;
+
+font-size:14px;
+```
+
+}
+
+@media(max-width:600px){
+
+
+.navbar{
+
+    padding:15px 20px;
+}
+
+.navbar h2{
+
+    font-size:18px;
+}
+
+.logout-btn{
+
+    padding:10px 18px;
+}
+
+.welcome-card{
+
+    padding:30px 20px;
+}
+
+.welcome-card h1{
+
+    font-size:26px;
+}
+
+}
+
+
+
+/* Responsive */
+@media(max-width:500px){
+
+
+.form-card{
+    padding:30px 20px;
+}
+
+.form-card h1{
+    font-size:26px;
+}
+
+
+}
+
+/* Extra Links Styles */
+.extra-links {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.extra-links a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    transition: .3s;
+}
+
+.extra-links a:hover {
+    color: white;
+}
+
+.sub-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 8px;
+}
+
+.sub-links a {
+    margin-bottom: 0;
+}
+
+.back-to-login-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-to-login-container a {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-to-login-container a:hover {
+    color: white;
+}

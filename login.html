@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+```
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="bg-animation"></div>
+
+<div class="floating floating1"></div>
+<div class="floating floating2"></div>
+<div class="floating floating3"></div>
+
+<div class="container">
+
+    <div class="form-card" data-aos="zoom-in">
+
+        <!-- Login UI Section -->
+        <div id="login-section">
+        <h1>Welcome Back!</h1>
+        <p> Please enter your details</p>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email Address" id="email-login" >
+        </div>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input id="password-login" type="password" placeholder="Password" autocomplete="new-password">
+             <i class="fa-solid fa-eye" id="togglePassword"></i>
+        </div>
+
+        <button class="btn" id="btn-login" >
+            Login
+        </button>
+
+        <!-- Required New Links -->
+        <div class="extra-links">
+            <a href="#" id="forgot-password-link">Forgot Password?</a>
+            <div class="sub-links">
+                <a href="#" id="change-email-link">Change Email</a>
+                <a href="#" id="change-password-link">Change Password</a>
+            </div>
+        </div>
+
+        <div class="bottom-text">
+            don't have an account?
+            <a href="signup.html">signup</a>
+        </div>
+    </div>
+
+    <!-- Forgot Password UI Section -->
+    <div id="forgot-password-section" style="display: none;">
+        <h1>Forgot Password</h1>
+        <p>Enter your email to receive a reset link</p>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email Address" id="forgot-email">
+        </div>
+
+        <button class="btn" id="btn-forgot-send">
+            Send Reset Link
+        </button>
+
+        <div class="back-to-login-container">
+            <a href="#" class="back-to-login">Back to Login</a>
+        </div>
+    </div>
+
+    <!-- Change Email UI Section -->
+    <div id="change-email-section" style="display: none;">
+        <h1>Change Email</h1>
+        <p>Enter details to update your email</p>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Current Email" id="current-email">
+        </div>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="New Email" id="new-email">
+        </div>
+
+        <button class="btn" id="btn-change-email-verify">
+            Verify Button
+        </button>
+
+        <div class="back-to-login-container">
+            <a href="#" class="back-to-login">Back to Login</a>
+        </div>
+    </div>
+
+    <!-- Change Password UI Section -->
+    <div id="change-password-section" style="display: none;">
+        <h1>Change Password</h1>
+        <p>Enter details to update your password</p>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Current Password" id="current-password">
+            <i class="fa-solid fa-eye toggle-password-field" data-target="current-password"></i>
+        </div>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="New Password" id="new-password">
+            <i class="fa-solid fa-eye toggle-password-field" data-target="new-password"></i>
+        </div>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Confirm Password" id="confirm-password">
+            <i class="fa-solid fa-eye toggle-password-field" data-target="confirm-password"></i>
+        </div>
+
+        <button class="btn" id="btn-update-password">
+            Update Password Button
+        </button>
+
+        <div class="back-to-login-container">
+            <a href="#" class="back-to-login">Back to Login</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script type="module" src="js/login.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1200
+    });
+
+    // Helper function to toggle password visibility for all fields with 'toggle-password-field' class
+    document.querySelectorAll('.toggle-password-field').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const targetId = toggle.dataset.target;
+            const passwordField = document.getElementById(targetId);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggle.classList.remove("fa-eye");
+                toggle.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                toggle.classList.remove("fa-eye-slash");
+                toggle.classList.add("fa-eye");
+            }
+        });
+    });
+
+    // Toggle password visibility for the login password field
+    const loginPasswordField = document.getElementById("password-login");
+    const toggleLoginPassword = document.getElementById("togglePassword");
+    toggleLoginPassword.addEventListener("click", () => {
+        if (loginPasswordField.type === "password") {
+            loginPasswordField.type = "text";
+            toggleLoginPassword.classList.remove("fa-eye");
+            toggleLoginPassword.classList.add("fa-eye-slash");
+        } else {
+            loginPasswordField.type = "password";
+            toggleLoginPassword.classList.remove("fa-eye-slash");
+            toggleLoginPassword.classList.add("fa-eye");
+        }
+    });
+
+    // UI Section Toggling Logic
+    const loginSection = document.getElementById('login-section');
+    const forgotPasswordSection = document.getElementById('forgot-password-section');
+    const changeEmailSection = document.getElementById('change-email-section');
+    const changePasswordSection = document.getElementById('change-password-section');
+
+    const forgotPasswordLink = document.getElementById('forgot-password-link');
+    const changeEmailLink = document.getElementById('change-email-link');
+    const changePasswordLink = document.getElementById('change-password-link');
+    const backToLoginButtons = document.querySelectorAll('.back-to-login');
+
+    function showSection(sectionToShow) {
+        loginSection.style.display = 'none';
+        forgotPasswordSection.style.display = 'none';
+        changeEmailSection.style.display = 'none';
+        changePasswordSection.style.display = 'none';
+        sectionToShow.style.display = 'block';
+    }
+
+    forgotPasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(forgotPasswordSection);
+    });
+
+    changeEmailLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(changeEmailSection);
+    });
+
+    changePasswordLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection(changePasswordSection);
+    });
+
+    backToLoginButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(loginSection);
+        });
+    });
+
+</script>
+```
+
+</body>
+</html>

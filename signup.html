@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+```
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- AOS Animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<div class="bg-animation"></div>
+
+<div class="floating floating1"></div>
+<div class="floating floating2"></div>
+<div class="floating floating3"></div>
+
+<div class="container">
+
+    <div class="form-card" data-aos="zoom-in">
+
+        <h1>Create Account</h1>
+        <p>Join us and start your journey</p>
+
+        <div class="input-box">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email Address" id="email" >
+        </div>
+
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <input id="password" type="password" placeholder="Password" autocomplete="new-password">
+             <i
+        class="fa-solid fa-eye"
+        id="togglePassword">
+              </i>
+        </div>
+
+        <button class="btn" id="btn" >
+            Sign Up
+        </button>
+
+        <div class="bottom-text">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<!-- <script type="module" src="js/firebase.js"></script> -->
+<script type="module" src="js/signup.js"></script>
+
+<script>
+    AOS.init({
+        duration: 1200
+    });
+
+    const password =
+document.getElementById("password");
+
+const togglePassword =
+document.getElementById("togglePassword");
+
+togglePassword.addEventListener("click", () => {
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        togglePassword.classList.remove("fa-eye");
+        togglePassword.classList.add("fa-eye-slash");
+
+    }else{
+
+        password.type = "password";
+
+        togglePassword.classList.remove("fa-eye-slash");
+        togglePassword.classList.add("fa-eye");
+
+    }
+
+});
+</script>
+```
+
+</body>
+</html>
