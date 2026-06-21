@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
+<div class="shape shape3"></div>
+
+<nav class="navbar">
+    <div class="logo">Firebase Auth</div>
+    <button id="logoutBtn" class="logout-btn">Logout</button>
+</nav>
+
+<div class="home-card">
+    <h1>Welcome</h1>
+    <p>You have successfully logged into your account.</p>
+    <p id="userEmail" class="user-email"></p>
+
+    <div class="home-actions">
+        <a class="btn action-link" href="change-email.html">Change Email</a>
+        <a class="btn action-link" href="change-password.html">Change Password</a>
+    </div>
+</div>
+
+<script type="module" src="js/home.js"></script>
+
+</body>
+</html>

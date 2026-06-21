@@ -1,65 +1,50 @@
+import { auth, createUserWithEmailAndPassword } from "./firebase.js";
 
-import { auth, createUserWithEmailAndPassword } from "./firebase.js"; 
-
+const signupBtn = document.getElementById("signupBtn");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
-const button = document.getElementById("btn");
+const togglePassword = document.getElementById("togglePassword");
 
-button.addEventListener("click", () => {
-   console.log("button clicked");
-   console.log(emailInput.value, passwordInput.value);
-
-   if (!emailInput.value || !passwordInput.value) {
-       Swal.fire({
-           icon: 'error',
-           title: 'Oops...',
-           text: 'Please enter both email and password!',
-       });
-       return;
-   }
-
-   createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
-  .then((res) => {
-    const user = res.user;
+const showError = (title, error) => {
     Swal.fire({
-        icon: 'success',
-        title: 'Signup Successful!',
-        text: 'Your account has been created successfully. Please login.',
-        showConfirmButton: false,
-        timer: 1500
-    }).then(() => {
-        window.location.href = "login.html";
+        icon: "error",
+        title,
+        text: error.message
     });
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-      if(errorCode == "auth/email-already-in-use"){
-          Swal.fire({
-              icon: 'error',
-              title: 'Signup Failed',
-              text: 'Email is already in use!',
-          });
-      } else if (errorCode === "auth/invalid-email") {
-          Swal.fire({
-              icon: 'error',
-              title: 'Signup Failed',
-              text: 'The email address is not valid.',
-          });
-      } else if (errorCode === "auth/weak-password") {
-          Swal.fire({
-              icon: 'error',
-              title: 'Signup Failed',
-              text: 'Password should be at least 6 characters.',
-          });
-      } else {
-          Swal.fire({
-              icon: 'error',
-              title: 'Signup Error',
-              text: errorMessage,
-          });
-      }
-      console.log("error -->", errorMessage);
-      console.log("error code -->", errorCode);
-  });
+};
+
+togglePassword.addEventListener("click", () => {
+    const isPassword = passwordInput.type === "password";
+
+    passwordInput.type = isPassword ? "text" : "password";
+    togglePassword.classList.toggle("fa-eye", !isPassword);
+    togglePassword.classList.toggle("fa-eye-slash", isPassword);
+});
+
+signupBtn.addEventListener("click", async () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if (!email || !password) {
+        Swal.fire({
+            icon: "warning",
+            title: "Missing Fields",
+            text: "Please fill all fields"
+        });
+        return;
+    }
+
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+
+        await Swal.fire({
+            icon: "success",
+            title: "Account Created",
+            text: "Signup successful"
+        });
+
+        window.location.href = "login.html";
+    } catch (error) {
+        showError("Signup Failed", error);
+    }
 });
